@@ -1,17 +1,5 @@
-//! By convention, root.zig is the root source file when making a package.
 const std = @import("std");
 const Io = std.Io;
-
-/// This is a documentation comment to explain the `printAnotherMessage` function below.
-///
-/// Accepting an `Io.Writer` instance is a handy way to write reusable code.
-pub fn printAnotherMessage(writer: *Io.Writer) Io.Writer.Error!void {
-    try writer.print("Run `zig build test` to run the tests.\n", .{});
-}
-
-pub fn add(a: i32, b: i32) i32 {
-    return a + b;
-}
 
 /// Beregn terminbeløp for annuitetslån
 ///
@@ -23,10 +11,6 @@ pub fn calculate_terminbelop(loan: f64, years: u32, annual_interest_rate: f64) f
     const numerator = loan * monthly_interest_rate;
     const denominator = 1.0 - std.math.pow(f64, 1.0 + monthly_interest_rate, -@as(f64, @floatFromInt(total_payments)));
     return numerator / denominator;
-}
-
-test "basic add functionality" {
-    try std.testing.expect(add(3, 7) == 10);
 }
 
 test "calculate terminbelop" {
