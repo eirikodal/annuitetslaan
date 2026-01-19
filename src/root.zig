@@ -8,7 +8,7 @@ const Io = std.Io;
 pub fn calculate_terminbelop(loan: f64, years: u32, annual_interest_rate: f64) f64 {
     const monthly_interest_rate = annual_interest_rate / 100.0 / 12.0;
     const total_payments = years * 12;
-    const numerator = loan * monthly_interest_rate;
+    const numerator = loan * 1000000 * monthly_interest_rate;
     const denominator = 1.0 - std.math.pow(f64, 1.0 + monthly_interest_rate, -@as(f64, @floatFromInt(total_payments)));
     return numerator / denominator;
 }

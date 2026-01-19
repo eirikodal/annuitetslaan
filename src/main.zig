@@ -28,7 +28,7 @@ pub fn main() !void {
         var buf: [100]u8 = undefined;
 
         if (lan_str == null) {
-            std.debug.print("Lånebeløp: ", .{});
+            std.debug.print("Lånebeløp (mil. nok): ", .{});
             lan_str = try readLine(stdin, &buf, allocator);
         }
         if (ar_str == null) {
@@ -57,4 +57,8 @@ fn readLine(file: std.fs.File, buf: []u8, allocator: std.mem.Allocator) ![:0]con
 
 fn showUsage() void {
     std.debug.print("Bruk: terminbelp <lanebelop> <ar> <rente>\n", .{});
+    std.debug.print("  lanebelop: Lånebeløp i millioner kroner\n", .{});
+    std.debug.print("  ar: Antall år for lånet\n", .{});
+    std.debug.print("  rente: Årlig rente i prosent\n", .{});
+    std.debug.print("Eksempel: terminbelp 2.5 20 4.5\n", .{});
 }
